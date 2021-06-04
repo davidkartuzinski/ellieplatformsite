@@ -1,5 +1,5 @@
 """
-WSGI config for elliewebsite_django project.
+WSGI config for elliesite project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'elliewebsite_django.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'elliesite.settings')
 
 application = get_wsgi_application()
