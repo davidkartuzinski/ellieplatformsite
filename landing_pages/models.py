@@ -22,7 +22,7 @@ class Campaign(models.Model):
 
 class Page(models.Model):
     title = models.CharField(max_length=50)
-    slug = models.SlugField()
+    # slug = models.SlugField()
     description = models.TextField()
     content = HTMLField()
     schema = models.JSONField()
