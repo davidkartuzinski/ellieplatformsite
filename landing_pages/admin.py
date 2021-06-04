@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from landing_pages.models import (
+    Tag, Campaign, Page)
+
+
+admin.site.register(Tag)
+admin.site.register(Campaign)
+admin.site.register(Page)
