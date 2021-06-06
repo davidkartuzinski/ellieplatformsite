@@ -120,10 +120,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'elliesite/static'),
+    # os.path.join(BASE_DIR, 'elliesite/static/theme'),
+]
+
+
 
 # Media files
 # https://overiq.com/django-1-10/handling-media-files-in-django/
