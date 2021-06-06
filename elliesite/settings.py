@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 2. 3rd party apps
     'tinymce',
+    'clear_cache',
     # 3. own apps
     'blog',
     'landing_pages',
@@ -120,10 +121,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'elliesite/static'),
+    # os.path.join(BASE_DIR, 'elliesite/static/theme'),
+]
+
+
 
 # Media files
 # https://overiq.com/django-1-10/handling-media-files-in-django/
@@ -138,5 +144,7 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "code,table,link",
+    'height': 500,
+    'width': 960,
+    'plugins': "code,table,link,image,visualblocks,media,wordcount",
 }

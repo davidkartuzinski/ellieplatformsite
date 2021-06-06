@@ -22,12 +22,13 @@ class Campaign(models.Model):
 
 class Page(models.Model):
     title = models.CharField(max_length=50)
-    # slug = models.SlugField()
+    slug = models.SlugField(max_length=60, unique=True)
     description = models.TextField()
     content = HTMLField()
-    schema = models.JSONField()
     tags = models.ManyToManyField(Tag, related_name='page_tags')
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
+    meta_description = models.TextField(max_length=160, default='meta description')
+
 
     def __str__(self):
         return self.title

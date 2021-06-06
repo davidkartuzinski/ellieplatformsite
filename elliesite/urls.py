@@ -18,12 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-
+from . import views
 
 # https://overiq.com/django-1-10/handling-media-files-in-django/
 urlpatterns = [
+    path('', views.home, name='home'),
     url(r'^blog/', include('blog.urls')),
     url(r'^l/', include('landing_pages.urls')),
     path('admin/', admin.site.urls),
 ]
-# ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
