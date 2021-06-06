@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 2. 3rd party apps
     'tinymce',
+    'clear_cache',
     # 3. own apps
     'blog',
     'landing_pages',
@@ -143,5 +144,7 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "code,table,link",
+    'height': 500,
+    'width': 960,
+    'plugins': "code,table,link,image,visualblocks,media,wordcount",
 }

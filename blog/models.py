@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from tinymce import models as tinymce_models
 from tinymce.models import HTMLField
 
 
@@ -11,7 +12,8 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     post_slug = models.SlugField(max_length=60, unique=True)
     header_image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
-    post_content = HTMLField()
+    post_content = tinymce_models.HTMLField()
+    intro = HTMLField(default=True, max_length=160)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     active = models.BooleanField(default=True)
