@@ -1,8 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-from tinymce import models as tinymce_models
-from tinymce.models import HTMLField
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 # Create your models here.
@@ -24,11 +24,10 @@ class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     post_slug = models.SlugField(max_length=60, unique=True)
-    # category = models.ManyToManyField(Category, default="Ellie", related_name='posts')
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
-    header_image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
-    post_content = tinymce_models.HTMLField()
-    intro = HTMLField(default=True, max_length=160)
+    header_image = models.ImageField(upload_to='blog/%Y/%m/%d', height_field=None, width_field=None, max_length=100)
+    post_content = RichTextUploadingField()
+    intro = RichTextField(max_length=160)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     active = models.BooleanField(default=True)

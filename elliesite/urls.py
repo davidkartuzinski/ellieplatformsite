@@ -21,9 +21,13 @@ from django.conf.urls.static import static
 from . import views
 
 # https://overiq.com/django-1-10/handling-media-files-in-django/
-urlpatterns = [
+regular_patterns = [
     path('', views.home, name='home'),
     url(r'^blog/', include('blog.urls')),
     url(r'^l/', include('landing_pages.urls')),
     path('admin/', admin.site.urls),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
+media_root = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+static_root = static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns = regular_patterns + media_root + static_root
