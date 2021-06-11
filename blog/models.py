@@ -2,6 +2,8 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
+
 
 # Create your models here.
 
@@ -24,7 +26,7 @@ class Post(models.Model):
     post_slug = models.SlugField(max_length=60, unique=True)
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
     header_image = models.ImageField(upload_to='blog/%Y/%m/%d', height_field=None, width_field=None, max_length=100)
-    post_content = RichTextField()
+    post_content = RichTextUploadingField()
     intro = RichTextField(max_length=160)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
