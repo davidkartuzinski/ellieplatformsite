@@ -12,18 +12,73 @@
 
 {% include 'includes/nav-menu.html' %}
 
-<section class="has-divider text-light jarallax bg-dark" data-jarallax data-speed="0.5" data-overlay>
-    <img src="{% static 'page-images/classroom-blog.jpeg' %}" alt="" class="jarallax-img opacity-50">
+<section class="bg-primary-alt header-inner">
     <div class="container">
-        <div class="row">
-            <div class="col-xl-5 col-lg-6 col-md-8">
-                <h1 class="display-4">Official Ellie™ Platform Blog</h1>
-                <p class="lead mb-0">Read and discover how we're empowering educators everywhere.</p>
+        <div class="row my-3">
+            <div class="col">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <span> Author:&nbsp  </span><a href="#"> David Kartuzinski</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row justify-content-center my-4">
+        </div>
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-9 col-xl-8">
+                <h1>Contributing author: David Kartuzinski</h1>
+            </div>
+        </div>
+        <div class="row my-6 justify-content-between">
+            <div class="col-lg-7 col-xl-8 mb-3 mb-lg-0">
+                <img src="{% static 'theme/article-3.jpg' %}" alt="Image" class="rounded">
+            </div>
+            <div class="col-lg-4 col-xl-3">
+                <div class="mb-3">
+                    <h6 class="mb-1">Brief Bio:</h6>
+                    <p>
+                        Ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                        totam rem.
+                    </p>
+                    <p>
+                        Ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                        totam rem.
+                    </p>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex align-items-center">
+                        <span class="text-small mr-1">Share:</span>
+                        <div class="d-flex mx-2">
+                            <a href="#" class="btn btn-round btn-primary mx-1">
+                                <img class="icon icon-sm" src="{% static 'img/icons/social/twitter.svg' %}"
+                                     alt="twitter social icon" style="opacity: 100" data-inject-svg />
+                            </a>
+                            <a href="#" class="btn btn-round btn-primary mx-1">
+                                <img class=" icon icon-sm bg-secondary" src="{% static 'img/icons/social/facebook.svg' %}"
+                                     alt="facebook social icon" style="opacity: 100" data-inject-svg />
+                            </a>
+                            <a href="#" class="btn btn-round btn-primary mx-1">
+                                <img class="icon icon-sm" src="{% static 'img/icons/social/linkedin.svg' %}"
+                                     alt="linkedin social icon" style="opacity: 100" data-inject-svg />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <h6 class="mb-1">Website</h6>
+                    <a href="#">https://website.io/</a>
+                </div>
             </div>
         </div>
     </div>
     <div class="divider">
-        <img src="{% static 'img/dividers/divider-2.svg' %}" alt="graphical divider" data-inject-svg/>
+        <img src="{% static 'img/dividers/divider-1.svg'%}" alt="graphical divider" data-inject-svg/>
     </div>
 </section>
 
@@ -34,7 +89,7 @@
             <div class="col-md-8 col-lg-9">
 
 
-                {% for post in posts %}
+                {% for post in author.posts.all %}
 
                 <div class="pr-lg-4">
                     <div class="card card-article-wide flex-md-row no-gutters">
@@ -45,7 +100,7 @@
                             <div class="d-flex justify-content-between mb-3">
                                 <div class="text-small d-flex">
                                     <div class="mr-2">
-                                        <a href="#">Business</a>
+                                        <a href="{% url 'category' post.category.slug %}">{{ post.category.name }}</a>
                                     </div>
                                     <span class="text-muted">{{ post.published_date }}</span>
                                 </div>
@@ -53,7 +108,7 @@
 
                       <img class="icon icon-sm "
                            src="{% static 'img/icons/interface/heart.svg' %}"
-                           alt="heart interface icon" data-inject-svg style="opacity: 100;" />12
+                           alt="heart interface icon" data-inject-svg style="opacity: 100;"/>12
                     </span>
                             </div>
                             <a href="#" class="flex-grow-1">
@@ -321,6 +376,7 @@
 <!-- Removes page load animation when window is finished loading -->
 <script type="text/javascript">
       window.addEventListener("load", function () {    document.querySelector('body').classList.add('loaded');  });
+
 
 
 </script>
