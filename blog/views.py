@@ -64,6 +64,7 @@ def blog_post(request, slug):
     # link from blog roll, from blog_post
     # replace existing author name with user and image
     # own model?
+# Meta description and title updated to match page / post
 
 
 # MODELS:
