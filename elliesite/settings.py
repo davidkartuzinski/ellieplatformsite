@@ -17,6 +17,7 @@ import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 2. 3rd party apps
     'tinymce',
+    'ckeditor',
     'clear_cache',
     # 3. own apps
     'blog',
@@ -128,8 +130,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'elliesite/static'),
     # os.path.join(BASE_DIR, 'elliesite/static/theme'),
 ]
-
-
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 # Media files
 # https://overiq.com/django-1-10/handling-media-files-in-django/
