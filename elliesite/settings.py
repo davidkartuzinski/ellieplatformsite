@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 2. 3rd party apps
     'tinymce',
+    'ckeditor',
+    'ckeditor_uploader',
     'clear_cache',
     # 3. own apps
     'blog',
@@ -134,17 +136,16 @@ STATICFILES_DIRS = [
 # Media files
 # https://overiq.com/django-1-10/handling-media-files-in-django/
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = 'pillow'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-TINYMCE_DEFAULT_CONFIG = {
-    'height': 500,
-    'width': 960,
-    'plugins': "code,table,link,image,visualblocks,media,wordcount",
-}
