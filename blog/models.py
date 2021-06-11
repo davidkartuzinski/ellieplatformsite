@@ -7,10 +7,25 @@ from tinymce.models import HTMLField
 
 # Create your models here.
 
+class Category(models.Model):
+    name = models.CharField(max_length=30, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
+
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     post_slug = models.SlugField(max_length=60, unique=True)
+    # category = models.ManyToManyField(Category, default="Ellie", related_name='posts')
+    category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
     header_image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
     post_content = tinymce_models.HTMLField()
     intro = HTMLField(default=True, max_length=160)
