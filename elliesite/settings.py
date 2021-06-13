@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'django.contrib.flatpages',
     # 2. 3rd party apps
     'ckeditor',
     'ckeditor_uploader',
@@ -47,6 +50,8 @@ INSTALLED_APPS = [
     'blog',
     'landing_pages',
 ]
+
+SITE_ID = 1  # Sitemaps https://www.codesnail.com/adding-a-sitemap-to-the-website-django-blog-10/
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {

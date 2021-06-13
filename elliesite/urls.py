@@ -14,25 +14,39 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+
 
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.flatpages import views as staticviews
+
+from django.contrib.sitemaps.views import sitemap
+from blog.sitemaps import PostSitemap, FlatPageSitemap
 
 from . import views
+
+sitemaps = {
+    'posts': PostSitemap,
+    'flatpages': FlatPageSitemap,
+}
 
 # https://overiq.com/django-1-10/handling-media-files-in-django/
 regular_patterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls', namespace='blog')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-
-    path('', views.home, name='home'),
-    # url(r'^blog/', include('blog.urls')),
-    # url(r'^l/', include('landing_pages.urls')),
-
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
+flatpage_patterns = [
+    # https://docs.djangoproject.com/en/3.2/ref/contrib/flatpages/#using-the-urlconf
+
+    # example path('privacy-policy/', staticviews.flatpage, {'url': '/privacy-policy/'}, name='privacy-policy'),
+    path('', staticviews.flatpage, {'url': '/home/'}, name='home'),
+    re_path(r'^(?P<url>.*/)$', staticviews.flatpage),
+]
+
 media_root = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 static_root = static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-urlpatterns = regular_patterns + media_root + static_root
+urlpatterns = regular_patterns + media_root + static_root + flatpage_patterns
