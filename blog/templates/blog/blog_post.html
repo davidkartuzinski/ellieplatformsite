@@ -16,11 +16,12 @@
                                 <a href="../blog">Blog</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ post.title }}</a>
+                                <strong>{{ post.title }}</strong>
                             </li>
                         </ol>
                     </nav>
-                    <p class="breadcrumb-item"> Category: <strong>{{ post.category.name }}</strong></p>
+                    <p class="breadcrumb-item"> Category:&nbsp <a href="#">
+                       {{ post.category }}</strong></a></p>
                 </div>
 
                 <h1>{{ post.title }}</h1>
@@ -33,8 +34,8 @@
                         <div>by <a href="#">{{ post.author }}</a>
 
                         </div>
-                        <div class="text-small text-muted">Published: <strong>{{ post.published_date|date:'M d, Y'
-                            }}</strong></div>
+                        <div class="text-small text-muted">Published: <strong>
+                            {{ post.published_date|date:'M d, Y' }}</strong></div>
                     </div>
                 </div>
             </div>

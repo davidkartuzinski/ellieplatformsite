@@ -3,4 +3,4 @@ from django.conf import settings
 
 
 def home(request):
-    return render(request, 'base.html', {'base_dir': settings.BASE_DIR})
+    return render(request, 'base.html',)
