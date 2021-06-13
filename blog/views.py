@@ -71,10 +71,12 @@ def blog_post(request, slug):
 # breadcrumb links
 # Recent Articles
 # Add Category to Model and then to Blog roll and single article page
+    # Category links
+    # Category flatpages
 # ensure links works link from blog roll, from blog_post
 # Author Page
 # link from blog roll, from blog_post
-# replace existing author name with user and image
+# replace existing author name with user and image - DONE
 # own model?
 # Meta description and title updated to match page / post
 # SEARCH: https://www.codesnail.com/building-a-search-functionality-django-blog-9/
@@ -82,14 +84,16 @@ def blog_post(request, slug):
 
 
 # MODELS:
-# Author Model can have one to many relation to posts
-# Twitter, LinkedIn, Website, Instagram, YouTube, Bio, author-slug, name, picture
+# Author Model can have one to many relation to posts - DONE
+    # Twitter, LinkedIn, Website, Instagram, YouTube, Bio, author-slug, name, picture
+    # Create Author Bio component
+    # Add to template files
 # Tag model can have one to many relation to posts
 # tag name, tag-slug
 
 
 # website
 # Breadcrumbs
-# add the rest of the pages
+# add the rest of the flatpages
 # Mailchimp
-# Main Menu from all pages
+# Main Menu from all flatpages

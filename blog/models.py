@@ -68,6 +68,7 @@ class Post(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     active = models.BooleanField(default=True)
+    updated = models.DateTimeField(auto_now=True)
 
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     meta_description = models.TextField(max_length=160, default='meta description')
@@ -75,6 +76,9 @@ class Post(models.Model):
     def publish(self):
         self.published_date = timezone.now()
         self.save()
+
+    def get_absolute_url(self):
+        return '/' + self.slug
 
     def __str__(self):
         return self.title
