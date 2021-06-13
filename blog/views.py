@@ -77,6 +77,8 @@ def blog_post(request, slug):
 # replace existing author name with user and image
 # own model?
 # Meta description and title updated to match page / post
+# SEARCH: https://www.codesnail.com/building-a-search-functionality-django-blog-9/
+# SITEMAP: https://www.codesnail.com/adding-a-sitemap-to-the-website-django-blog-10/
 
 
 # MODELS:

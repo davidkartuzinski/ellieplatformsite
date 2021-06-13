@@ -21,17 +21,18 @@
                         </ol>
                     </nav>
                     <p class="breadcrumb-item"> Category:&nbsp <a href="#">
-                       {{ post.category }}</strong></a></p>
+                     <strong>{{ post.category }}</strong></a></p>
                 </div>
 
                 <h1>{{ post.title }}</h1>
 
                 <div class="d-flex align-items-center">
                     <a href="#">
-                        <img src="{% static 'img/avatars/male-1.jpg' %}" alt="Avatar" class="avatar mr-2">
+                        <img src="{{ post.author.profile.profile_pic.url }}"
+                             alt="{{ post.author.first_name }} {{ post.author.last_name }}" class="avatar mr-2">
                     </a>
                     <div>
-                        <div>by <a href="#">{{ post.author }}</a>
+                        <div>by <a href="#">{{ post.author.first_name }} {{ post.author.last_name }}</a>
 
                         </div>
                         <div class="text-small text-muted">Published: <strong>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Category
+from .models import Post, Category, Profile
 
 
 # Register your models here.
@@ -16,6 +16,7 @@ class PostAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category)
+admin.site.register(Profile)
 
 # https://stackoverflow.com/questions/2466373/create-hyperlink-in-django-template-of-object-that-has-a-space/2468295#2468295
 # @admin.register(Post)
