@@ -20,8 +20,8 @@
                             </li>
                         </ol>
                     </nav>
-                    <p class="breadcrumb-item"> Category:&nbsp <a href="#">
-                     <strong>{{ post.category }}</strong></a></p>
+                    <p class="breadcrumb-item"> Category:&nbsp <a href="{% url 'blog:category' post.category.slug  %}">
+                        {{ post.category }}</a></p>
                 </div>
 
                 <h1>{{ post.title }}</h1>
