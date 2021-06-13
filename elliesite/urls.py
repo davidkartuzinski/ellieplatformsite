@@ -41,7 +41,7 @@ regular_patterns = [
 flatpage_patterns = [
     # https://docs.djangoproject.com/en/3.2/ref/contrib/flatpages/#using-the-urlconf
 
-    # example path('privacy-policy/', staticviews.flatpage, {'url': '/privacy-policy/'}, name='privacy-policy'),
+    path('privacy-policy/', staticviews.flatpage, {'url': '/privacy-policy/'}, name='privacy-policy'),
     path('', staticviews.flatpage, {'url': '/home/'}, name='home'),
     path('home/', views.index, name='index'),
     re_path(r'^(?P<url>.*/)$', staticviews.flatpage),
