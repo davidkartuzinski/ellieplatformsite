@@ -43,6 +43,7 @@ flatpage_patterns = [
 
     # example path('privacy-policy/', staticviews.flatpage, {'url': '/privacy-policy/'}, name='privacy-policy'),
     path('', staticviews.flatpage, {'url': '/home/'}, name='home'),
+    path('home/', views.index, name='index'),
     re_path(r'^(?P<url>.*/)$', staticviews.flatpage),
 ]
 
