@@ -47,14 +47,13 @@ def author_post_list(request):
 
 
 def category(request, slug):
-    cat = Category.objects.get(slug=slug)
+    category = Category.objects.get(slug=slug)
 
     context = {
-        'category': cat,
+        'category': category,
     }
 
     return render(request, 'blog/category.html', context)
-    #   {'base_dir': settings.BASE_DIR,})
 
 
 def blog_post(request, slug):

@@ -37,7 +37,8 @@
                             <div class="d-flex justify-content-between mb-3">
                                 <div class="text-small d-flex">
                                     <div class="mr-2">
-                                        <a href="#">{{ post.category.name }}</a>
+                                       <p>Category:&nbsp <a href="{% url 'blog:category' post.category.slug  %}">
+                                        {{ post.category.name }}</a></p>
                                     </div>
                                     <span class="text-muted">{{ post.published_date|date:'M d, Y' }}</span>
                                 </div>

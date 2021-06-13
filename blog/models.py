@@ -5,6 +5,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.urls import reverse
 
 
 # Profile Model
@@ -48,6 +49,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('home', kwargs={'pk': self.pk, 'slug': self.slug })
+
 
 # Post Model
 class Post(models.Model):
@@ -57,7 +61,6 @@ class Post(models.Model):
     )
 
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
-    # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=60, unique=True)
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
