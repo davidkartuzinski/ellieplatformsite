@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.conf import settings
 from .models import Post, Category
@@ -6,7 +6,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def post_list(request):
-    posts_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    # posts_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts_list = Post.objects.filter(status="published")
     paginator = Paginator(posts_list, 3)  # change this to accommodate number of posts per page
     page = request.GET.get('page', 1)
     try:
@@ -46,18 +47,19 @@ def author_post_list(request):
 
 
 def category(request, slug):
-    category = Category.objects.get(slug=slug)
+    cat = Category.objects.get(slug=slug)
 
     context = {
-        'category': category
+        'category': cat,
     }
 
-    return render(request, 'blog/category_post_list.html', context)
+    return render(request, 'blog/category.html', context)
     #   {'base_dir': settings.BASE_DIR,})
 
 
 def blog_post(request, slug):
-    post = Post.objects.get(post_slug=slug)
+    # post = Post.objects.get(slug=slug)
+    post = get_object_or_404(Post, slug=slug, status='published')
 
     context = {
         'post': post
