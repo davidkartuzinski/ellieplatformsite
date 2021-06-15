@@ -1,5 +1,7 @@
-{% load static %}
+<!doctype html>
+<html lang="en">
 
+{% load static %}
 
 <head>
     <meta charset="utf-8">
@@ -22,6 +24,12 @@
     <meta name="twitter:description" content="{{ post.meta_description|striptags }}">
     <meta name="twitter:image" content="https://{{request.site.domain}}{{ post.header_image.url }}">
     <meta name="twitter:image:alt" content="{{ post.header_image_alt }}">
+
+    {% if APPNAME == "blog" %}
+        {% include 'includes/blog_schema.html' %}
+    {% else %}
+        {% include 'includes/site_schema.html' %}
+    {% endif %}
 
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/loaders/loader-typing.css' %}"/>
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/theme.css' %}"/>

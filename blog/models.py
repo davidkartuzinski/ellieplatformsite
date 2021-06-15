@@ -17,6 +17,7 @@ class Profile(models.Model):
     profile_pic = models.ImageField(default='default-profile-pic.jpeg', upload_to='profiles-pics')
     # Social Media
     twitter_bio_handle = models.CharField(max_length=255, null=False, blank=True, default="@open_apprentice")
+    author_website = models.CharField(max_length=255, null=False, blank=True, default="https://ellieplatform.org")
 
     class Meta:
         verbose_name = "Profile"
