@@ -1,4 +1,8 @@
+
+
 {% extends 'base.html' %}
+
+{% include './head.html' %}
 
 {% load static %}
 
@@ -33,7 +37,6 @@
                     </a>
                     <div>
                         <div>by <a href="#">{{ post.author.first_name }} {{ post.author.last_name }}</a>
-
                         </div>
                         <div class="text-small text-muted">Published: <strong>
                             {{ post.published_date|date:'M d, Y' }}</strong></div>
@@ -47,7 +50,7 @@
     <div class="container">
         <div class="row justify-content-center position-relative">
             <div class="col-lg-10 col-xl-8">
-                <img src="{{ post.header_image.url }}" alt="Image" class="rounded">
+                <img src="{{ post.header_image.url }}" alt="{{ post.header_image_alt.url }}" class="rounded">
             </div>
         </div>
         <div class="row justify-content-center">

@@ -1,11 +1,35 @@
-{% load static %}
+<!doctype html>
+<html lang="en">
 
+{% load static %}
 
 <head>
     <meta charset="utf-8">
-    <title>Ellie Platform - Teach Anyone, Anything.</title>
+
+    <title>{{ post.title|striptags }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ellie Platform - Teach Anyone, Anything.">
+
+    <meta name="description" content="{{ post.meta_description|striptags }}">
+
+    <meta property="og:title" content="{{ post.title|striptags }}" />
+    <meta property="og:description" content="{{ post.intro|striptags }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://{{request.site.domain}}/{{ post.slug|striptags }}" />
+    <meta property="og:image" content="https://{{request.site.domain}}{% static 'img/ellie/elephant-E-logo.png' %}"  />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="{{ GLOBAL_TWITTER_ACCOUNT }}">
+    <meta name="twitter:creator" content="{{ post.author.profile.twitter_bio_handle }}">
+    <meta name="twitter:title" content="{{ post.title }}">
+    <meta name="twitter:description" content="{{ post.meta_description|striptags }}">
+    <meta name="twitter:image" content="https://{{request.site.domain}}{{ post.header_image.url }}">
+    <meta name="twitter:image:alt" content="{{ post.header_image_alt }}">
+
+    {% if APPNAME == "blog" %}
+        {% include 'includes/blog_schema.html' %}
+    {% else %}
+        {% include 'includes/site_schema.html' %}
+    {% endif %}
 
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/loaders/loader-typing.css' %}"/>
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/theme.css' %}"/>

@@ -15,6 +15,9 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = RichTextField(null=True, max_length=300)
     profile_pic = models.ImageField(default='default-profile-pic.jpeg', upload_to='profiles-pics')
+    # Social Media
+    twitter_bio_handle = models.CharField(max_length=255, null=False, blank=True, default="@open_apprentice")
+    author_website = models.CharField(max_length=255, null=False, blank=True, default="https://ellieplatform.org")
 
     class Meta:
         verbose_name = "Profile"
@@ -50,7 +53,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('home', kwargs={'pk': self.pk, 'slug': self.slug })
+        return reverse('home', kwargs={'pk': self.pk, 'slug': self.slug})
 
 
 # Post Model
@@ -65,6 +68,8 @@ class Post(models.Model):
     slug = models.SlugField(max_length=60, unique=True)
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
     header_image = models.ImageField(upload_to='blog/%Y/%m/%d', height_field=None, width_field=None, max_length=100)
+    header_image_alt = models.CharField(max_length=200,
+                                        default="Sorry, we're assholes and forgot to give you an image description.")
     post_content = RichTextUploadingField()
     intro = RichTextField(max_length=160)
 
