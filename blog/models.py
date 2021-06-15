@@ -13,10 +13,15 @@ from django.urls import reverse
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = RichTextField(null=True, max_length=300)
+    short_bio = RichTextField(null=True, max_length=200)
+    bio = RichTextField(null=True, max_length=500)
     profile_pic = models.ImageField(default='default-profile-pic.jpeg', upload_to='profiles-pics')
     # Social Media
     twitter_bio_handle = models.CharField(max_length=255, null=False, blank=True, default="@open_apprentice")
+    youtube_handle = models.CharField(max_length=255, null=False, blank=True)
+    linkedin_profile_url = models.CharField(max_length=255, null=False, blank=True)
+    instagram_handle = models.CharField(max_length=255, null=False, blank=True, default="@open_apprentice")
+    github_url = models.CharField(max_length=255, null=False, blank=True)
     author_website = models.CharField(max_length=255, null=False, blank=True, default="https://ellieplatform.org")
 
     class Meta:
