@@ -75,10 +75,22 @@ def blog_post(request, slug):
     # post = Post.objects.get(slug=slug)
     post = get_object_or_404(Post, slug=slug, status='published')
 
+    profile = post.author.profile
+
+    links = {}
+    networks = [
+        'github_url',
+        'twitter_bio_handle',
+        'youtube_handle',
+    ]
+    for nw in networks:
+        value = getattr(profile, nw)
+        if value:
+            links[nw] = value
+
     context = {
-        'post': post
+        'post': post,
+        'links': links.items()
     }
 
     return render(request, 'blog/blog_post.html', context)
-
-
