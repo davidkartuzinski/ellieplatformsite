@@ -17,17 +17,26 @@ class Profile(models.Model):
     bio = RichTextField(null=True, max_length=500)
     profile_pic = models.ImageField(default='default-profile-pic.jpeg', upload_to='profiles-pics')
     # Social Media
-    twitter_bio_handle = models.CharField(max_length=255, null=False, blank=True, default="@open_apprentice")
-    youtube_handle = models.CharField(max_length=255, null=False, blank=True)
-    linkedin_profile_url = models.CharField(max_length=255, null=False, blank=True)
-    instagram_handle = models.CharField(max_length=255, null=False, blank=True, default="@open_apprentice")
-    github_url = models.CharField(max_length=255, null=False, blank=True)
-    author_website = models.CharField(max_length=255, null=False, blank=True, default="https://ellieplatform.org")
+    twitter_bio_handle = models.CharField(max_length=255, null=False, blank=True, default="@open_apprentice",
+                                          help_text="Enter just your handle, example, 'superbob'.")
+    youtube_handle = models.CharField(max_length=255, null=False, blank=True,
+                                      help_text="Enter just your username, example, 'bobbarker'.")
+    linkedin_profile_url = models.CharField(max_length=255, null=False, blank=True,
+                                            help_text="Enter just your username, example, 'bobbarker'.")
+    instagram_handle = models.CharField(max_length=255, null=False, blank=True, default="@open_apprentice",
+                                        help_text="Enter just your handle, example, 'superbob'.")
+    github_url = models.CharField(max_length=255, null=False, blank=True,
+                                  help_text="Enter just your username, example, 'superbob'.")
+    author_website = models.CharField(max_length=255, null=False, blank=True, default="https://ellieplatform.org",
+                                      help_text="Enter your full website URL with https:// ")
 
     class Meta:
         verbose_name = "Profile"
         verbose_name_plural = "Profiles"
         ordering = ['user']
+
+    def get_absolute_url(self):
+        return reverse('author', kwargs={'pk': self.pk, 'author': self.user.username})
 
     def __str__(self):
         return str(self.user)
@@ -54,11 +63,11 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
         ordering = ['name']
 
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'pk': self.pk, 'slug': self.slug})
+
     def __str__(self):
         return self.name
-
-    def get_absolute_url(self):
-        return reverse('home', kwargs={'pk': self.pk, 'slug': self.slug})
 
 
 # Post Model
@@ -68,7 +77,7 @@ class Post(models.Model):
         ('published', 'Published'),
     )
 
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=60, unique=True)
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
