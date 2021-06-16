@@ -4,18 +4,34 @@
 
 {% block content %}
 
-<section class="has-divider text-light jarallax bg-dark" data-jarallax data-speed="0.5" data-overlay>
-    <img src="{% static 'page-images/classroom-blog.jpeg' %}" alt="" class="jarallax-img opacity-50">
+
+<section class="bg-primary-alt header-inner">
     <div class="container">
-        <div class="row">
-            <div class="col-xl-5 col-lg-6 col-md-8">
-                <h1 class="display-4">Official Ellie™ Platform Blog</h1>
-                <p class="lead mb-0">Read and discover how we're empowering educators everywhere.</p>
+        <div class="row my-3">
+            <div class="col">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <span> Category: &nbsp;  </span>
+                            <a href="{% url 'blog:category' category.slug  %}">{{ category.name }}</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row justify-content-center my-4">
+        </div>
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-9 col-xl-8">
+                <h1>Category: {{ category.name }}</h1>
             </div>
         </div>
     </div>
     <div class="divider">
-        <img src="{% static 'img/dividers/divider-2.svg' %}" alt="graphical divider" data-inject-svg/>
+        <img src="{% static 'img/dividers/divider-1.svg'%}" alt="graphical divider" data-inject-svg/>
     </div>
 </section>
 
@@ -37,8 +53,8 @@
                             <div class="d-flex justify-content-between mb-3">
                                 <div class="text-small d-flex">
                                     <div class="mr-2">
-                                       <p>Category:&nbsp <a href="{% url 'blog:category' post.category.slug  %}">
-                                        {{ post.category.name }}</a></p>
+                                        <p>Category:&nbsp; <a href="{% url 'blog:category' post.category.slug  %}">
+                                            {{ post.category.name }}</a></p>
                                     </div>
                                     <span class="text-muted">{{ post.published_date|date:'M d, Y' }}</span>
                                 </div>
@@ -68,7 +84,7 @@
                     </div>
                 </div><!-- CARD END -->
 
-                {%endfor %}
+                {% endfor %}
 
 
                 <div class="row justify-content-between align-items-center pr-lg-4">
@@ -111,10 +127,8 @@
 
         </div>
     </div>
-    </div>
 </section>
 
-{% include 'includes/sign-up-call-to-action.html' %}
+{{% include 'includes/sign-up-call-to-action.html' %}
 
 {% endblock %}
-

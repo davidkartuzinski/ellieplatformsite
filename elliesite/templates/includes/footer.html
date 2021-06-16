@@ -1,10 +1,10 @@
 {% load static %}
-<footer class="pb-4 bg-primary-3 text-light">
+<footer class="pb-4 bg-light text-dark">
     <div class="container">
         <div class="row mb-3">
             <div class="col">
-                <a href="index.html">
-                    <img src="{% static 'theme/logo-white.svg' %}" alt="Ellie" class="icon icon-md mb-3">
+                <a href="../">
+                    <img src="{% static 'img/ellie/elephant-E-logo.png' %}" alt="Ellie" class="icon-md mb-3">
                 </a>
                 <p class="pr-xl-3">
                     The Ellie™ Platform is an open source MIT licensed project led by the <a href="https://openapprentice.org/">Open Apprentice Foundation</a>. Ellie™ is a cornerstone software project to help build on how teachers teach and students learn.
@@ -20,7 +20,7 @@
                         <a href="#" class="nav-link">Pages</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Blog</a>
+                        <a href="{% url 'blog:post_list' %}" class="nav-link">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Portfolio</a>

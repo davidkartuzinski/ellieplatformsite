@@ -1,6 +1,10 @@
 from django.shortcuts import render
-from django.conf import settings
+from django.http import HttpResponseRedirect
 
 
 def home(request):
-    return render(request, 'base.html', {'base_dir': settings.BASE_DIR})
+    return render(request, 'base.html', )
+
+
+def index(request):
+    return HttpResponseRedirect("/")
