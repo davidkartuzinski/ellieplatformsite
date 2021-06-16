@@ -61,7 +61,7 @@
                             </div>
                             <div class="d-flex align-items-center mt-3">
                                 <span class="badge bg-primary-alt text-primary">
-                                    <a href="{% url 'blog:post_list' %}{{ post.slug }}" class="flex-grow-1"> Read more... </a>
+                                    <a href="{% url 'blog:blog_post' slug=post.slug %}" class="flex-grow-1">Read more... </a>
                                 </span>
                             </div>
                         </div>

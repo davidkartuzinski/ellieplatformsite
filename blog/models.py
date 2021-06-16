@@ -35,9 +35,6 @@ class Profile(models.Model):
         verbose_name_plural = "Profiles"
         ordering = ['user']
 
-    def get_absolute_url(self):
-        return reverse('author', kwargs={'pk': self.pk, 'author': self.user.username})
-
     def __str__(self):
         return str(self.user)
 
@@ -62,9 +59,6 @@ class Category(models.Model):
         verbose_name = "Category"
         verbose_name_plural = "Categories"
         ordering = ['name']
-
-    def get_absolute_url(self):
-        return reverse('category', kwargs={'pk': self.pk, 'slug': self.slug})
 
     def __str__(self):
         return self.name
@@ -98,9 +92,6 @@ class Post(models.Model):
     def publish(self):
         self.published_date = timezone.now()
         self.save()
-
-    def get_absolute_url(self):
-        return '/' + self.slug
 
     def __str__(self):
         return self.title

@@ -23,8 +23,8 @@ def post_list(request):
     return render(request, 'blog/post_list.html', context, )
 
 
-def author_post_list(request, username):
-    author = User.objects.get(username=username)
+def author_post_list(request, author):
+    author = User.objects.get(username=author)
 
     posts_list = author.posts.filter(status="published")
     paginator = Paginator(posts_list, 2)  # change this to accommodate number of posts per page
@@ -44,7 +44,7 @@ def author_post_list(request, username):
         'page': page
     }
 
-    return render(request, 'blog/author_post_list.html', context, )
+    return render(request, 'blog/author_post_list.html', context)
 
 
 def category_post_list(request, slug):
