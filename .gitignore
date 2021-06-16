@@ -119,6 +119,7 @@ GitHub.sublime-settings
 
 # Static folder at project root
 /static/
+**staticfiles
 
 # macOS
 ._*

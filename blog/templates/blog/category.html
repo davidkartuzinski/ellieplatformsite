@@ -16,7 +16,7 @@
                         </li>
                         <li class="breadcrumb-item">
                             <span> Category: &nbsp;  </span>
-                            <a href="{% url 'blog:category' category.slug  %}">{{ category.name }}</a>
+                            <a href="{% url 'blog:category' slug=category.slug  %}">{{ category.name }}</a>
                         </li>
                     </ol>
                 </nav>
@@ -70,7 +70,7 @@
                                      alt="{{ post.author.first_name }} {{ post.author.last_name }} Profile Pic"
                                      class="avatar avatar-sm">
                                 <div class="ml-1">
-                                    <span class="text-small text-muted">By</span>
+                                  <span class="text-small text-muted">By <a href="{% url 'blog:author' author=post.author.username %}">{{ post.author.username|title }}</a></span>
                                     <span class="text-small">{{ post.author.first_name }} {{ post.author.last_name }}</span>
                                 </div>
 
