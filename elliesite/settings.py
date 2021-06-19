@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.flatpages',
@@ -54,9 +53,16 @@ INSTALLED_APPS = [
 # Set Installed Apps applicable in Development mode only, by checking if DEBUG is set to True.
 if DEBUG:
     INSTALLED_APPS += (
-        # Development extensions
+        # In development livereload comes before django.contrib.staticfiles
         'livereload',
+        'django.contrib.staticfiles',
     )
+else:
+    INSTALLED_APPS += (
+        # In production just add django.contrib.staticfiles.
+        'django.contrib.staticfiles',
+    )
+
 
 SITE_ID = 1  # Sitemaps https://www.codesnail.com/adding-a-sitemap-to-the-website-django-blog-10/
 
