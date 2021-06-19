@@ -6,7 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def post_list(request):
     posts_list = Post.objects.filter(status="published")
-    paginator = Paginator(posts_list, 2)  # change this to accommodate number of posts per page
+    paginator = Paginator(posts_list, 5)  # change this to accommodate number of posts per page
     page = request.GET.get('page', 1)
     try:
         posts = paginator.page(page)
@@ -27,8 +27,8 @@ def author_post_list(request, author):
     author = User.objects.get(username=author)
 
     posts_list = author.posts.filter(status="published")
-    paginator = Paginator(posts_list, 2)  # change this to accommodate number of posts per page
 
+    paginator = Paginator(posts_list, 3)  # change this to accommodate number of posts per page
     page = request.GET.get('page', 1)
 
     try:
@@ -51,7 +51,7 @@ def category_post_list(request, slug):
     category = Category.objects.get(slug=slug)
 
     posts_list = category.posts.filter(status="published")
-    paginator = Paginator(posts_list, 2)  # change this to accommodate number of posts per page
+    paginator = Paginator(posts_list, 5)  # change this to accommodate number of posts per page
 
     page = request.GET.get('page', 1)
 
