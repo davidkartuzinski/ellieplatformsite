@@ -50,7 +50,7 @@
                              alt="Twitter for {{ author.first_name }} {{ author.last_name }}"
                              data-inject-svg height="20"/>
                         <a href="https://twitter.com/{{ author.profile.twitter_bio_handle }}"
-                           target="_blank" rel="noopener noreferrer">@{{ author.profile.twitter_bio_handle }}</a>
+                           target="_blank" rel="noopener noreferrer">{{ author.profile.twitter_bio_handle }}</a>
                     </li>
                     {% endif %}
                     {% if author.profile.youtube_handle %}
@@ -83,7 +83,7 @@
                              data-inject-svg height="20"/><a
                             href="https://instagram.com/{{ author.profile.instagram_handle | safe }}"
                             target="_blank" rel="noopener noreferrer">
-                        @{{ author.profile.instagram_handle | safe }}</a>
+                        {{ author.profile.instagram_handle | safe }}</a>
                     </li>
                     {% endif %}
                     {% if author.profile.github_url %}

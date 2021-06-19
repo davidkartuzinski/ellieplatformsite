@@ -17,18 +17,18 @@ class Profile(models.Model):
     bio = RichTextField(null=True, max_length=500)
     profile_pic = models.ImageField(default='default-profile-pic.jpeg', upload_to='profiles-pics')
     # Social Media
-    twitter_bio_handle = models.CharField(max_length=255, null=False, blank=True, default="@open_apprentice",
-                                          help_text="Enter just your handle, example, 'superbob'.")
+    twitter_bio_handle = models.CharField(max_length=255, null=False, blank=True, default="@",
+                                          help_text="Enter just your handle, example, '@superbob'.")
     youtube_handle = models.CharField(max_length=255, null=False, blank=True,
                                       help_text="Enter just your username, example, 'bobbarker'.")
     linkedin_profile_url = models.CharField(max_length=255, null=False, blank=True,
                                             help_text="Enter just your username, example, 'bobbarker'.")
-    instagram_handle = models.CharField(max_length=255, null=False, blank=True, default="@open_apprentice",
-                                        help_text="Enter just your handle, example, 'superbob'.")
+    instagram_handle = models.CharField(max_length=255, null=False, blank=True, default="@",
+                                        help_text="Enter just your handle, example, '@superbob'.")
     github_url = models.CharField(max_length=255, null=False, blank=True,
                                   help_text="Enter just your username, example, 'superbob'.")
-    author_website = models.CharField(max_length=255, null=False, blank=True, default="https://ellieplatform.org",
-                                      help_text="Enter your full website URL with https:// ")
+    author_website = models.CharField(max_length=255, null=False, blank=True, default="https://",
+                                      help_text="Enter your full website URL, eg. https://youwebsite.com ")
 
     class Meta:
         verbose_name = "Profile"

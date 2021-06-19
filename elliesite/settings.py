@@ -51,6 +51,13 @@ INSTALLED_APPS = [
     'landing_pages',
 ]
 
+# Set Installed Apps applicable in Development mode only, by checking if DEBUG is set to True.
+if DEBUG:
+    INSTALLED_APPS += (
+        # Development extensions
+        'livereload',
+    )
+
 SITE_ID = 1  # Sitemaps https://www.codesnail.com/adding-a-sitemap-to-the-website-django-blog-10/
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
@@ -98,6 +105,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
 ]
+
+# Set Installed Apps applicable in Development mode only, by checking if DEBUG is set to True.
+if DEBUG:
+    MIDDLEWARE += (
+        # Development extensions
+        'livereload.middleware.LiveReloadScript',
+    )
 
 ROOT_URLCONF = 'elliesite.urls'
 
