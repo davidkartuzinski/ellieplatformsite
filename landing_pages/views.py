@@ -1,5 +1,12 @@
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from .models import Page
 
 
-def index(request):
-    return HttpResponse("Hello Landing Pages")
+def single_page(request, slug):
+    page = get_object_or_404(Page, slug=slug, status='published')
+
+    context = {
+        'page': page
+    }
+
+    return render(request, 'landing_pages/single_page.html', context)
