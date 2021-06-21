@@ -17,15 +17,14 @@ class Profile(models.Model):
     bio = RichTextField(null=True, max_length=500)
     profile_pic = models.ImageField(default='default-profile-pic.jpeg', upload_to='profiles-pics')
     # Social Media
-    twitter_bio_handle = models.CharField(max_length=255, null=False, blank=True, default="@",
-                                          help_text="Enter just your handle, example, '@superbob'.")
-    youtube_handle = models.CharField(max_length=255, null=False, blank=True,
+    twitter = models.CharField(max_length=255, null=False, blank=True, default="@", help_text="Enter just your handle, example, '@superbob'.")
+    youtube = models.CharField(max_length=255, null=False, blank=True,
                                       help_text="Enter just your username, example, 'bobbarker'.")
-    linkedin_profile_url = models.CharField(max_length=255, null=False, blank=True,
+    linkedin = models.CharField(max_length=255, null=False, blank=True,
                                             help_text="Enter just your username, example, 'bobbarker'.")
-    instagram_handle = models.CharField(max_length=255, null=False, blank=True, default="@",
+    instagram = models.CharField(max_length=255, null=False, blank=True, default="@",
                                         help_text="Enter just your handle, example, '@superbob'.")
-    github_url = models.CharField(max_length=255, null=False, blank=True,
+    github = models.CharField(max_length=255, null=False, blank=True,
                                   help_text="Enter just your username, example, 'superbob'.")
     author_website = models.CharField(max_length=255, null=False, blank=True, default="https://",
                                       help_text="Enter your full website URL, eg. https://youwebsite.com ")
@@ -34,6 +33,26 @@ class Profile(models.Model):
         verbose_name = "Profile"
         verbose_name_plural = "Profiles"
         ordering = ['user']
+
+    @property
+    def twitter_profile_url(self):
+        return 'https://twitter.com/' + str(self.twitter)
+
+    @property
+    def youtube_profile_url(self):
+        return 'https://youtube.com/c/' + str(self.youtube)
+
+    @property
+    def linkedin_profile_url(self):
+        return 'https://linkedin.com/in/' + str(self.linkedin)
+
+    @property
+    def instagram_profile_url(self):
+        return 'https://instagram.com/' + str(self.instagram)
+
+    @property
+    def github_profile_url(self):
+        return 'https://github.com/' + str(self.github)
 
     def __str__(self):
         return str(self.user)

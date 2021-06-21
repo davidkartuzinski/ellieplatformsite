@@ -33,61 +33,64 @@
             </div>
             <div class="col-lg-4 col-xl-3">
                 <img  src="{{ author.profile.profile_pic.url }}" alt="{{ author.full_name }}" class="rounded">
-                  {% if author.profile.author_website %}
-                    <div class="mb-2">
-                        <h6 class="mb-1">Website</h6>
-                            <a href="{{ author.profile.author_website | safe }}" target="_blank"
-                               rel="noopener noreferrer">
-                                {{ author.profile.author_website | safe }}</a>
-                    </div>
-                {% endif %}
+
                 <ul class="list-unstyled list-inline">
-                    {% if author.profile.twitter_bio_handle %}
+                    {% if author.profile.author_website %}
+                    <li>
+                        <img style="margin: 5px 6px 5px 0"
+                             src="{% static 'img/icons/interface/star.svg' %}"
+                             data-inject-svg height="30"/>
+                        <a href="{{ author.profile.author_website | safe }}" target="_blank"
+                           rel="noopener noreferrer">
+                            {{ author.profile.author_website | safe }}</a>
+                    </li>
+                    {% endif %}
+                    {% if author.profile.twitter %}
                     <li>
                         <img style="margin: 5px 10px 5px 0"
                              src="{% static 'img/icons/social/twitter.svg' %}"
                              data-inject-svg height="20"/>
-                        <a href="https://twitter.com/{{ author.profile.twitter_bio_handle }}"
-                           target="_blank" rel="noopener noreferrer">{{ author.profile.twitter_bio_handle }}</a>
+                        <a href="{{ author.profile.twitter_profile_url | safe }}"
+                           target="_blank" rel="noopener noreferrer">{{ author.profile.twitter }}</a>
                     </li>
                     {% endif %}
-                    {% if author.profile.youtube_handle %}
+                    {% if author.profile.youtube %}
                     <li>
                         <img style="margin: 5px 10px 5px 0"
                              src="{% static 'img/icons/social/youtube.svg' %}"
                              data-inject-svg height="20"/><a
-                            href="https://www.youtube.com/c/{{ author.profile.youtube_handle | safe }}"
+                            href="{{ author.profile.youtube_profile_url | safe }}"
                             target="_blank" rel="noopener noreferrer">
-                        {{ author.profile.youtube_handle | safe }}</a>
+                        {{ author.profile.youtube | safe }}</a>
                     </li>
                     {% endif %}
-                    {% if author.profile.linkedin_profile_url %}
+                    {% if author.profile.linkedin %}
                     <li>
                         <img style="margin: 5px 10px 5px 0"
                              src="{% static 'img/icons/social/linkedin.svg' %}"
                              data-inject-svg height="20"/><a
-                            href="https://www.linkedin.com/in/{{ author.profile.linkedin_profile_url | safe}}"
+                            href="{{ author.profile.linkedin_profile_url | safe}}"
                             target="_blank" rel="noopener noreferrer">
-                        {{ author.profile.linkedin_profile_url | safe }}</a>
+                        {{ author.profile.linkedin | safe }}</a>
                     </li>
                     {% endif %}
-                    {% if author.profile.instagram_handle %}
+                    {% if author.profile.instagram %}
                     <li>
                         <img style="margin: 5px 10px 5px 0"
                              src="{% static 'img/icons/social/instagram.svg' %}"
                              data-inject-svg height="20"/><a
-                            href="https://instagram.com/{{ author.profile.instagram_handle | safe }}"
+                            href="{{ author.profile.instagram_profile_url | safe }}"
                             target="_blank" rel="noopener noreferrer">
-                        {{ author.profile.instagram_handle | safe }}</a>
+                        {{ author.profile.instagram | safe }}</a>
                     </li>
                     {% endif %}
-                    {% if author.profile.github_url %}
+                    {% if author.profile.github %}
                     <li>
                         <img style="margin: 5px 10px 5px 0" src="{% static 'img/icons/social/github.svg' %}"
                              data-inject-svg height="20"/><a
-                            href="https://github.com/{{ author.profile.github_url | safe }}"
+                            href="{{ author.profile.github_profile_url | safe }}"
                             target="_blank" rel="noopener noreferrer">
-                        {{ author.profile.github_url | safe }}</a></li>
+                        {{ author.profile.github | safe }}</a></li>
                     {% endif %}
                 </ul>
             </div>
