@@ -14,9 +14,8 @@
                             <a href="index.html">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <span> Author:&nbsp</span>
-                            <a href="{% url 'blog:author' author=author.username %}">
-                            {{ author.first_name }} {{ author.last_name }}</a>
+                            <a href="{% url 'blog:author' author=author.get_username %}">
+                            <span> Author: </span>  {{ author.get_full_name }} </a>
                         </li>
                     </ol>
                 </nav>
@@ -26,14 +25,14 @@
         </div>
         <div class="row justify-content-center text-center">
             <div class="col-lg-9 col-xl-8">
-                <h1>Contributing author: &nbsp{{ author.first_name }}&nbsp{{ author.last_name }}</h1>
+                <h1>Contributing author: {{ author.get_full_name }}</h1>
             </div>
         </div>
         <div class="row my-6 justify-content-between">
             <div class="col-lg-2 col-xl-3">
             </div>
             <div class="col-lg-4 col-xl-3">
-                <img  src="{{ author.profile.profile_pic.url }}" alt="{{ author.first_name }} {{ author.last_name }}" class="rounded">
+                <img  src="{{ author.profile.profile_pic.url }}" alt="{{ author.full_name }}" class="rounded">
                   {% if author.profile.author_website %}
                     <div class="mb-2">
                         <h6 class="mb-1">Website</h6>
@@ -47,7 +46,6 @@
                     <li>
                         <img style="margin: 5px 10px 5px 0"
                              src="{% static 'img/icons/social/twitter.svg' %}"
-                             alt="Twitter for {{ author.first_name }} {{ author.last_name }}"
                              data-inject-svg height="20"/>
                         <a href="https://twitter.com/{{ author.profile.twitter_bio_handle }}"
                            target="_blank" rel="noopener noreferrer">{{ author.profile.twitter_bio_handle }}</a>
@@ -57,7 +55,6 @@
                     <li>
                         <img style="margin: 5px 10px 5px 0"
                              src="{% static 'img/icons/social/youtube.svg' %}"
-                             alt="YouTube for {{ author.first_name }} {{ author.last_name }}"
                              data-inject-svg height="20"/><a
                             href="https://www.youtube.com/c/{{ author.profile.youtube_handle | safe }}"
                             target="_blank" rel="noopener noreferrer">
@@ -68,7 +65,6 @@
                     <li>
                         <img style="margin: 5px 10px 5px 0"
                              src="{% static 'img/icons/social/linkedin.svg' %}"
-                             alt="LinkedIn for {{ author.first_name }} {{ author.last_name }}"
                              data-inject-svg height="20"/><a
                             href="https://www.linkedin.com/in/{{ author.profile.linkedin_profile_url | safe}}"
                             target="_blank" rel="noopener noreferrer">
@@ -79,7 +75,6 @@
                     <li>
                         <img style="margin: 5px 10px 5px 0"
                              src="{% static 'img/icons/social/instagram.svg' %}"
-                             alt="Instagram for {{ author.first_name }} {{ author.last_name }}"
                              data-inject-svg height="20"/><a
                             href="https://instagram.com/{{ author.profile.instagram_handle | safe }}"
                             target="_blank" rel="noopener noreferrer">
@@ -89,7 +84,6 @@
                     {% if author.profile.github_url %}
                     <li>
                         <img style="margin: 5px 10px 5px 0" src="{% static 'img/icons/social/github.svg' %}"
-                             alt="GitHub for {{ author.first_name }} {{ author.last_name }}"
                              data-inject-svg height="20"/><a
                             href="https://github.com/{{ author.profile.github_url | safe }}"
                             target="_blank" rel="noopener noreferrer">
@@ -118,7 +112,7 @@
 <section data-overlay>
            <div class="row mb-4">
                <div class="col ">
-                   <h2 class="text-center">Posts by: {{ author.first_name }} {{ author.last_name }}</h2>
+                   <h2 class="text-center">Posts by: {{ author.get_full_name }}</h2>
                </div>
            </div>
     <div class="container">
@@ -148,11 +142,11 @@
                             <p>{{ post.intro|safe }}</p>
                             <div class="d-flex align-items-center mt-3">
                                 <img src="{{ post.author.profile.profile_pic.url }}"
-                                     alt="{{ post.author.first_name }} {{ post.author.last_name }}"
+                                     alt="{{ post.author.full_name }}"
                                      class="avatar avatar-sm" >
                                 <div class="ml-1">
                                     <span class="text-small text-muted">By</span>
-                                    <span class="text-small">{{ author.first_name }} {{ author.last_name }}</span>
+                                    <span class="text-small">{{ author.get_full_name }}</span>
                                 </div>
                             </div>
                         </div>
