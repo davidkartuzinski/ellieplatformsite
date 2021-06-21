@@ -1,9 +1,10 @@
 from django.contrib import admin
 
-from landing_pages.models import (
-    Tag, Campaign, Page)
+from landing_pages.models import (Page)
 
 
-admin.site.register(Tag)
-admin.site.register(Campaign)
-admin.site.register(Page)
+@admin.register(Page)
+class PageAdmin(admin.ModelAdmin):
+    save_as = True
+    save_on_top = True
+
