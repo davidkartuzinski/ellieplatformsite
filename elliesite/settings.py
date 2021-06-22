@@ -55,13 +55,12 @@ if DEBUG:
     INSTALLED_APPS += (
         # In development livereload comes before django.contrib.staticfiles
         'livereload',
-        'django.contrib.staticfiles',
     )
-else:
-    INSTALLED_APPS += (
-        # In production just add django.contrib.staticfiles.
-        'django.contrib.staticfiles',
-    )
+
+INSTALLED_APPS += (
+    # In production just add django.contrib.staticfiles.
+    'django.contrib.staticfiles',
+)
 
 
 SITE_ID = 1  # Sitemaps https://www.codesnail.com/adding-a-sitemap-to-the-website-django-blog-10/
