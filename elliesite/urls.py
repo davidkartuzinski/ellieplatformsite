@@ -22,7 +22,7 @@ sitemaps = {
 regular_patterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls', namespace='blog')),
-    path('p/', include('landing_pages.urls', namespace='pages')),
+    path('p/', include('landing_pages.urls', namespace='single_page')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('sitemap.xml/', index, {'sitemaps': sitemaps}),
     path('sitemap-<str:section>.xml/', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
@@ -30,6 +30,10 @@ regular_patterns = [
 flatpage_patterns = [
     # https://docs.djangoproject.com/en/3.2/ref/contrib/flatpages/#using-the-urlconf
 
+    path('MIT-license/', staticviews.flatpage, {'url': '/MIT-license/'}, name='MIT-license'),
+    path('terms-and-conditions/', staticviews.flatpage, {'url': '/terms-and-conditions/'}, name='terms-and-conditions'),
+    path('about/', staticviews.flatpage, {'url': '/about/'}, name='about'),
+    path('contact/', staticviews.flatpage, {'url': '/contact/'}, name='contact'),
     path('privacy-policy/', staticviews.flatpage, {'url': '/privacy-policy/'}, name='privacy-policy'),
     path('', staticviews.flatpage, {'url': '/home/'}, name='home'),
     path('home/', views.index, name='index'),

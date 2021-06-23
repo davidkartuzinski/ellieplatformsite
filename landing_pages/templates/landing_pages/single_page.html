@@ -7,20 +7,7 @@
 {% block content %}
 
 
-<section class="pb-0 pb-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col">
-                <h1>{{ page.title }}</h1>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="p-0" data-reading-position>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col">
-                <article class="article">
+
 
                     {{ page.beg_page_content|safe }}
 
@@ -28,12 +15,7 @@
 
                     {{ page.end_page_content|safe }}
 
-                </article>
 
-            </div>
-        </div>
-    </div>
-</section>
 
 
 {% include 'includes/sign-up-call-to-action.html' %}
