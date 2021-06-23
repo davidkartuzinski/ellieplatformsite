@@ -27,12 +27,12 @@ class Page(models.Model):
 
     meta_description = models.TextField(max_length=160, default='meta description')
 
+    def get_absolute_url(self):
+        return reverse('landing_page:single_page', kwargs={'slug': self.slug})
+
     def publish(self):
         self.published_date = timezone.now()
         self.save()
-
-    def get_absolute_url(self):
-        return reverse('pages:single_page', kwargs={'slug': self.slug})
 
     def __str__(self):
         return self.title

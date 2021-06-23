@@ -11,22 +11,16 @@
                 </p>
             </div>
             <div class="col col-lg col-xl-2">
-                <h5>Navigate</h5>
+                <h5>Additional Resources</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Demos</a>
+                        <a href="{% url 'privacy-policy' %}" class="nav-link">Privacy Policy</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Pages</a>
+                        <a href="{% url 'terms-and-conditions' %}" class="nav-link">Terms and Conditions</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'blog:post_list' %}" class="nav-link">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Elements</a>
+                        <a href="{% url 'MIT-license' %}" class="nav-link">MIT License Info</a>
                     </li>
                 </ul>
             </div>
@@ -44,7 +38,7 @@
                         <img class="icon" src="{% static 'img/icons/theme/communication/mail.svg' %}" alt="mail icon"
                              data-inject-svg/>
                         <div class="ml-3">
-                            <p>Please contact us on Twitter, <br> the contact form or on GitHub.
+                            <p>Please contact us on <a href="https://twitter.com/open_apprentice">Twitter</a>, <br> the <a href="{% url 'contact' %}">contact form</a> or on <a href="https://github.com/open-apprentice">GitHub</a>.
                         </div>
                     </li>
                 </ul>
@@ -55,25 +49,25 @@
             <div class="col-auto">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="https://github.com/open-apprentice" class="nav-link">
                             <img class="icon " src="{% static 'img/icons/social/github.svg' %}" alt="github social icon"
                                  data-inject-svg/>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="https://twitter.com/open_apprentice" class="nav-link">
                             <img class="icon " src="{% static 'img/icons/social/twitter.svg' %}" alt="twitter social icon"
                                  data-inject-svg/>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="https://www.youtube.com/channel/UCzcd2gOS5otSHKYT8i7-hZw" class="nav-link">
                             <img class="icon " src="{% static 'img/icons/social/youtube.svg' %}" alt="youtube social icon"
                                  data-inject-svg/>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="https://www.linkedin.com/company/open-apprentice" class="nav-link">
                             <img class="icon " src="{% static 'img/icons/social/linkedin.svg' %}" alt="linkedin social icon"
                                  data-inject-svg/>
                         </a>

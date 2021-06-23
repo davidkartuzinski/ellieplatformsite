@@ -1,8 +1,8 @@
 from django.urls import path
-from landing_pages import views
+from . import views
 
-app_name = 'pages'
+app_name = 'landing_page'
 
 urlpatterns = [
-    path('<slug:slug>/', views.single_page, name="single_page"),
+    path('<slug:slug>/', views.single_page, name='single_page'),
 ]

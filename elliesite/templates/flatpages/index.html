@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+     {{ flatpage.newflatpage.content_section| safe}}
+
+
+
+{% include 'includes/sign-up-call-to-action.html' %}
+
+{% endblock %}

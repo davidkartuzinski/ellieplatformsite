@@ -9,7 +9,6 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10 col-xl-8">
-               {% if django.contrib.flatpages == True %}
                     <div class="d-flex justify-content-between align-items-center mb-3">
 
                         <nav aria-label="breadcrumb">
@@ -23,25 +22,14 @@
                             </ol>
                         </nav>
                     </div>
-
-                    <h1>{{ flatpage.title }}</h1>
-                {% endif %}
-                
-
-                <div class="d-flex align-items-center">
-                    {{ flatpage.content }}
-
-                </div>
             </div>
         </div>
     </div>
 </section>
-<section class="p-0" data-reading-position>
-    <div class="container">
 
 
-    </div>
-</section>
+      {{ flatpage.newflatpage.content_section| safe}}
+
 
 
 {% include 'includes/sign-up-call-to-action.html' %}

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # 3. own apps
     'blog',
     'landing_pages',
+    'flatpage_main',
 ]
 
 # Set Installed Apps applicable in Development mode only, by checking if DEBUG is set to True.
@@ -97,6 +98,8 @@ CKEDITOR_CONFIGS = {
             'elementspath',
             'codesnippet',
         ]),
+        'allowedContent': True,
+        'extraAllowedContent': '*(*)',
     },
 }
 
@@ -109,6 +112,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 # Set Installed Apps applicable in Development mode only, by checking if DEBUG is set to True.
